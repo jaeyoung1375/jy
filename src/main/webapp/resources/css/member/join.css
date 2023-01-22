@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+*{
+	box-sizing: border-box;
+}
+
+form{
+	width:360px;
+}
+
+.container{
+    display: flex;
+    justify-content: center; 
+}
+
+.wrapper{
+	display: flex;
+    justify-content: center;	
+}
+
+.email_input{
+    display: flex;
+    
+}
+
+.email_title{
+    display: block;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #2F3438;
+    word-break: keep-all;
+    line-height: 20px;
+}
+
+.form-control{
+    font-size: 15px;
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+}
+
+.form_control_empty{
+    font-size: 15px;
+    width: 180%;
+    height: 40px;
+    padding: 0 15px;
+}
+
+.email_button{
+    margin-bottom: 30px;
+    padding-top: 2px;
+}
+
+.email_submit{
+    margin-top: 10px;
+    width: 125%;
+    height: 45px;
+    padding: 0px;
+    color: rgb(194,200,204);
+    background:rgb(247, 248, 250);
+    border-color: rgb(218, 220, 224);
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.password_title{
+    display: block;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #2F3438;
+    word-break: keep-all;
+    line-height: 20px;
+}
+
+.password_comment{
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #828C94;
+    letter-spacing: -0.3px;
+}
+
+.password_input{
+    width: 125%;
+    margin: 0;
+    border: 1px solid #dbdbdb;
+    background-color: #fff;
+    color: #000;
+    border-radius: 4px;
+    font-size: 15px;
+    line-height: 21px;
+    padding: 8px 15px 9px;
+}
+
+.password_ck_title{
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #2F3438;
+    word-break: keep-all;
+    line-height: 20px;
+}
+
+.password_ck_input{
+    width: 125%;
+    margin: 0;
+    border: 1px solid #dbdbdb;
+    background-color: #fff;
+    color: #000;
+    border-radius: 4px;
+    font-size: 15px;
+    line-height: 21px;
+    padding: 8px 15px 9px;
+}
+
+.nickname_title{
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #2F3438;
+    word-break: keep-all;
+    line-height: 20px;
+}
+
+.nickname_comment{
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #828C94;
+    letter-spacing: -0.3px;
+}
+
+.nickname_input{
+    width: 125%;
+    margin: 0;
+    border: 1px solid #dbdbdb;
+    background-color: #fff;
+    color: #000;
+    border-radius: 4px;
+    font-size: 15px;
+    line-height: 21px;
+    padding: 8px 15px 9px; 
+}
+
+input::placeholder{
+    color: rgb(194,200,204);
+}
+
+.join_submit{
+    font-size: 17px;
+    line-height: 26px;
+    padding: 11px 10px;
+    margin-top: 20px;
+    color: #fff;
+    background-color: #35c5f0;
+    width: 125%;
+}
