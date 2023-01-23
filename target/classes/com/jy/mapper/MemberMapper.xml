@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.jy.mapper.MemberMapper">
+  
+  	<insert id="memberJoin">
+  		
+  		insert into jy_member values(#{memberId}, #{memberPw}, #{memberName}, #{memberNickName}, #{mail}, 0, sysdate)
+  	
+  	</insert> 
+  	
+  	<select id="memberIdChk" resultType="int">
+  	
+  	select count(*) from jy_member where memberId = #{memberId}
+  	</select>
+  
+  </mapper>
