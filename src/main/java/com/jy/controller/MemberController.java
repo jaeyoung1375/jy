@@ -64,6 +64,23 @@ public class MemberController {
 	}
 	
 	
+	// 닉네임 중복검사
+	@RequestMapping(value="/memberNickNameChk", method=RequestMethod.POST)
+	@ResponseBody
+	public String memberNickNameChk(String memberNickName) throws Exception{
+			
+		log.info("memberNickNameChk() 진입 " );
+		int result = memberService.memberNickNameChk(memberNickName);
+		System.out.println("result : "+result);
+			
+		if(result != 0) {
+			return "fail";
+		}else {
+			return "success";
+		}
+	}
+	
+	
 	
 	
 

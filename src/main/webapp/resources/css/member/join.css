@@ -41,7 +41,7 @@ form{
 
 .form_control_empty{
     font-size: 15px;
-    width: 250%;
+    width: 180%;
     height: 40px;
     padding: 0 15px;
 }
@@ -111,6 +111,7 @@ form{
 
 .password_comment{
     margin-bottom: 10px;
+    width:120%;
     font-size: 14px;
     line-height: 18px;
     color: #828C94;
@@ -234,6 +235,24 @@ input::placeholder{
 }
 .final_id_ck{
 	display:none;
+	font-size: 12px;
+	width:110%;
+	color:red;
+}
+
+.final_pw_ck{
+	display:none;
+	font-size: 12px;
+	width:110%;
+	color:red;
+}
+
+.essential_pw_ck{
+	display:none;
+	font-size: 12px;
+	width:110%;
+	color:red;
+	
 }
 
 
@@ -250,10 +269,45 @@ input::placeholder{
 	display:none;
 }
 
+
+
+
 .pwck_input_re_1{
 	display:none;
+	font-size: 12px;
+	width:110%;
+	color:green;
 }
 
 .pwck_input_re_2{
 	display:none;
+	font-size: 12px;
+	width:110%;
+	color:red;
+	
+}
+
+.nickname_input_re_1{
+	display:none;
+	font-size: 12px;
+	width:110%;
+	color:red;
+	
+}
+
+.final_nickname_ck{
+	display:none;
+	font-size: 12px;
+	width:110%;
+	color:red;
+}
+
+
+
+.final_email_ck{
+	display:none;
+	font-size: 12px;
+	width:110%;
+	color:red;
+	
 }

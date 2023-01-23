@@ -26,4 +26,11 @@ public class MemberServiceImpl implements MemberService{
 		return memberMapper.memberIdChk(memberId);
 	}
 
+
+	@Override
+	public int memberNickNameChk(String memberNickName) {
+		
+		return memberMapper.memberNickNameChk(memberNickName);
+	}
+
 }

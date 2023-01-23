@@ -28,7 +28,7 @@
 			<label>
 				<input type="text" class="id_input" name="memberId" placeholder="아이디" id="id">
 			</label>
-			<span class="final_id_ck">잘못된 조합 입니다.</span>  
+			<span class="final_id_ck">아이디는 영문,숫자로 구성된 6자리 이상 12자리 이내로 작성하세요</span>  
 				<span class="id_input_re_1">사용 가능한 아이디입니다.</span>
 		      <span class="id_input_re_2">아이디가 이미 존재합니다.</span>
 		</div>
@@ -42,6 +42,8 @@
 			<label>
 				<input type="password" class="password_input" name="memberPw" placeholder="비밀번호" id="pw">
 			</label>
+			<span class="essential_pw_ck">필수항목입니다!</span>
+			<span class="final_pw_ck">비밀번호는 영문,숫자,특수기호를 포함하여 8자 이상이어야 합니다!</span>
 		</div>
 		<!-- 비밀번호 입력 종료 -->
 
@@ -73,8 +75,10 @@
 			<label class="nickname_title">닉네임</label>
 			<div class="nickname_comment">다른 유저와 겹치지 않도록 입력해주세요(2~15자)</div>
 			<label>
-				<input type="text" class="nickname_input" name="memberNickName" placeholder="별명 (2~15자)">
+				<input type="text" class="nickname_input" name="memberNickName" placeholder="별명 (2~15자)" id="nickname">
 			</label>
+		      <span class="nickname_input_re_1">별명이 이미 존재합니다.</span>
+		      <span class="final_nickname_ck">잘못된 형식입니다!</span>
 		</div>
         <!-- 닉네임 입력 칸 종료-->
 
@@ -86,10 +90,11 @@
 			<div class="email_input">
 				<span class="email_input_local">
 					<label>
-						<input type="text" class="form-control" placeholder="이메일" name="memberEmail" id="user_email">
+						<input type="text" class="form-control" placeholder="이메일" name="memberEmail" id="email">
 					</label>
+					<span class="final_email_ck">잘못된 형식입니다!</span>
 				</span>
-				<span class="emial_input_separator">@</span>
+				<span class="email_input_separator">@</span>
 				<span class="email_input_domain">
 					<label>
 						<select class="form_control_empty">
@@ -122,9 +127,13 @@
 		var pwckCheck = false;
 		var nameCheck = false;
 		var nickNameCheck = false;
+		var nickNameckCheck = false;
+	
 		var emailCheck = false;
 		let id_regex = /^[a-z0-9]{6,12}$/;
 		let pw_regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
+		let nickname_regex = /^[a-zA-Z0-9가-힣]{2,15}$/;
+		let email_regex = /^[a-zA-z0-9]{5,15}$/;
 		
 			
 			/* 회원가입 유효성 검사 */
@@ -134,26 +143,9 @@
 					var id = $('#id').val();
 					var pw = $('#pw').val();
 					var pwck = $('#pwck').val();
+		
 					
-					
-					
-					
-					
-					if(!id_regex.test(id)){
-						$('.final_id_ck').css('display','block');
-						idCheck = false;
-					}else{
-						$('.final_id_ck').css('display','none');
-						idCheck = true;
-					}
-					
-					
-					if(!pw_regex.test(pw) || pw == ""){
-						alert("비밀번호는 영문,숫자,특수기호로 구성된 8자리 이상 16자리 이내로 작성하세요");
-						pwCheck = false;
-					}else{
-						pwCheck = true;
-					}
+				
 					
 					if(pwck == ""){
 						$('.final_pwck_ck').css('display','block');
@@ -165,7 +157,7 @@
 					
 					
 					
-					if(idCheck&&pwCheck&&idckCheck){
+					if(idCheck&&pwCheck&&idckCheck&&nickNameCheck){
 					$("#join_form").attr("action","/join");
 					$("#join_form").submit();
 				}
@@ -176,7 +168,7 @@
 			
 			
 			/* 이메일 컬럼 합치기 */
-			$("#user_email").blur(function(){
+			$("#email").blur(function(){
 				email();
 			});
 			
@@ -185,8 +177,8 @@
 			});
 			
 			function email(){
-				const email = $("#user_email").val();
-				const middle = $(".emial_input_separator").text();
+				const email = $("#email").val();
+				const middle = $(".email_input_separator").text();
 				const address = $(".form_control_empty").val();
 				if(email != "" && address != ""){
 					$("#totalemail").val(email+middle+address);
@@ -236,6 +228,89 @@
 				});
 			});
 			
+			/* 닉네임 중복검사 */
+			$("#nickname").on("propertychange change keyup paste input",function(){
+				
+				var memberNickName = $('#nickname').val();
+				var data = {memberNickName : memberNickName};
+				
+				$.ajax({
+					type:"post",
+					url:"/memberNickNameChk",
+					data:data,
+					success:function(result){
+						if(result != 'fail'){
+							$('.nickname_input_re_1').css('display','none');
+							nickNameckCheck = true;
+						}else{
+							$('.nickname_input_re_1').css('display','inline-block');
+							nickNameckCheck = false;
+						}
+					}
+				});
+			});
+			
+			
+			
+			/* 아이디 정규표현식 검사 */
+			$("#id").on("propertychange change keyup paste input", function(){
+				
+				var id= $('#id').val();
+				
+				if(!id_regex.test(id)){
+					$('.final_id_ck').css('display','block');
+					idCheck = false;
+				}else{
+					$('.final_id_ck').css('display','none');
+					idCheck = true;
+				}
+			});
+			
+			/* 비밀번호 정규표현식 검사 */
+			$('#pw').on("propertychange change keyup paste input",function(){
+				
+				var pw = $('#pw').val();
+				
+				if(!pw_regex.test(pw)){
+					$('.final_pw_ck').css('display','block');
+					pwCheck = false;
+				}else{
+					$('.final_pw_ck').css('display','none');
+					pwCheck = true;
+				}
+	
+			});
+			
+			/* 닉네임 정규표현식 검사 */
+			$('#nickname').on("propertychange change keyup paste input",function(){
+				
+				var nickname = $('#nickname').val();
+				
+				if(!nickname_regex.test(nickname)){
+					$('.final_nickname_ck').css('display','block');
+					nickNameCheck = false;
+				}else{
+					$('.final_nickname_ck').css('display','none');
+					nickNameCheck = true;
+				}
+	
+			});
+			
+			
+			/* 이메일 정규표현식 검사 */
+			$('#email').on("propertychange change keyup paste input",function(){
+				
+				var email = $('#email').val();
+				
+				if(!email_regex.test(email)){
+					$('.final_email_ck').css('display','block');
+					emailCheck = false;
+				}else{
+					$('.final_email_ck').css('display','none');
+					emailCheck = true;
+				}
+	
+			});
 		
 			
 			
