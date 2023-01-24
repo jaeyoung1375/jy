@@ -14,7 +14,7 @@
 <body style="height:1200px;">
 	<%@include file="../include/header.jsp" %> 
 	
-	<div class="container">
+<div class="container">
 		<h1 class="join_title">회원가입</h1>	
 	</div>
 	
@@ -111,6 +111,19 @@
 			<button class="email_submit" type="button">이메일 인증하기</button>
 			</div>
 		<!-- 이메일 입력칸 종료 -->
+
+		<div class="open_expand">
+			<div class="open_expand_container">
+				<div class="comment">이메일로 전송된 인증코드를 입력해주세요.</div>
+					<div class="open_expand_wrapper">
+						<div class="open_expand_main">
+							<input type="text" placeholder="인증코드 6자리 입력" class="email_code">
+							<button class="email_code_button" type="button" disabled>확인</button>
+						</div>
+					</div>
+			<span id="email_check_input_box_warn"></span>
+			</div>
+		</div>
 		
 		<button class="join_submit" type="submit">회원가입하기</button>
 	</form>
@@ -121,19 +134,21 @@
 	
 		<script>
 		
-		var idCheck = false;
-		var idckCheck = false;
-		var pwCheck = false;
-		var pwckCheck = false;
-		var nameCheck = false;
-		var nickNameCheck = false;
-		var nickNameckCheck = false;
-	
-		var emailCheck = false;
+		var idCheck = false; // 아이디 정규표현식 검사
+		var idckCheck = false; // 아이디 중복확인 검사
+		var pwCheck = false;  // 비밀번호 검사
+		var pwckCheck = false; // 비밀번호 확인 일치 검사
+		var nameCheck = false;  // 이름 검사
+		var nickNameCheck = false; // 닉네임 정규표현식 검사
+		var nickNameckCheck = false; // 닉네임 중복확인 검사
+		var emailCheck = false; // 이메일 인증번호 일치 여부 검사
+		var emailckCheck = false // 이메일 정규표현식 검사
 		let id_regex = /^[a-z0-9]{6,12}$/;
 		let pw_regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
 		let nickname_regex = /^[a-zA-Z0-9가-힣]{2,15}$/;
+		let name_regex = /^[가-힣][2,6]$/	;
 		let email_regex = /^[a-zA-z0-9]{5,15}$/;
+		
 		
 			
 			/* 회원가입 유효성 검사 */
@@ -157,7 +172,7 @@
 					
 					
 					
-					if(idCheck&&pwCheck&&idckCheck&&nickNameCheck){
+					if(idCheck&&idckCheck&&pwCheck&&pwckCheck&&nickNameCheck&&emailCheck&&emailckCheck){
 					$("#join_form").attr("action","/join");
 					$("#join_form").submit();
 				}
@@ -304,13 +319,68 @@
 				
 				if(!email_regex.test(email)){
 					$('.final_email_ck').css('display','block');
-					emailCheck = false;
+					emailckCheck = false;
 				}else{
 					$('.final_email_ck').css('display','none');
-					emailCheck = true;
+					emailckCheck = true;
 				}
 	
 			});
+			
+			// 인증번호 이메일 전송
+			$('.email_submit').click(function(){
+				var email = $("#totalemail").val(); // 입력한 이메일
+				var checkBox =$(".email_code").val(); // 인증번호 입력란
+				
+				if(emailckCheck){
+					$('.open_expand').css('display','block');
+				$.ajax({
+					type: "GET",
+					url : "mailCheck?email="+email,
+					success : function(data){
+					console.log("data : " +data);
+					code = data;
+						
+					}
+				});
+			}
+				
+				
+			});
+			
+		// 인증번호 확인 버튼을 통한 유효성 검사
+		$(".email_code_button").click(function(){
+			
+			var inputCode = $(".email_code").val(); // 입력코드
+			var checkResult = $("#email_check_input_box_warn"); // 비교결과
+			
+			if(inputCode == code){
+				checkResult.html("인증되었습니다.");
+				checkResult.css("color","green");
+				emailCheck = true;
+			}else{
+				checkResult.html("인증번호가 틀립니다.");
+				checkResult.css("color","red");
+				emailCheck = false;
+			}
+		});
+		
+		
+		
+		// 인증번호가 공백이 아닐시 버튼 disabled 해제
+		$('.email_code').on("propertychange change keyup paste input",function(){
+			
+			var inputCode = $(".email_code").val(); // 입력코드
+			var checkResult = $("#email_check_input_box_warn"); // 비교결과
+			var button = $('.email_code_button');
+			
+			if(inputCode != ""){
+				button.attr("disabled",false);
+				button.css("background-color","#35c5f0");
+				button.css("border-color","#35c5f0");
+				button.css("color","#fff");
+			}
+		});
 		
 			
 			

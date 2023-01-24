@@ -311,3 +311,67 @@ input::placeholder{
 	color:red;
 	
 }
+
+
+.open_expand{
+  display: none;
+  overflow: hidden;
+  margin-bottom: 20px;  
+  width: 125%;
+}
+
+.open_expand_container{
+    
+    margin: 0px -15px 20px;
+    padding: 20px 16px;
+    min-height: 143px;
+    background: rgb(247, 248, 250);
+}
+
+.comment{
+    font-size: 13px;
+    line-height: 20px;
+    margin-bottom: 12px;
+}
+
+.open_expand_wrapper{
+    border: 1px solid rgb(219,219,219);
+    min-height: 45px;
+    padding: 0px 16px;
+    background: rgb(255, 255, 255);
+    margin-bottom: 10px;
+}
+
+.open_expand_main{
+    display: flex;
+    align-items: center;
+    height: 45px;
+    -webkit-box-align: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.email_code{
+    border: none;
+    height: 30px;
+    font-size: 15px;
+    line-height: 15px;
+    flex: 1 0 0px;
+    width: 0px;
+}
+
+.email_code_button{
+    white-space: pre;
+    height: 31px;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 7px 10px;
+    background-color: #a3e4f8;
+    border-color: #a3e4f8;
+    color: #e5f9ff;
+}
+
+#email_check_input_box_warn{
+	font-size:12px;
+	width:110%;
+}
