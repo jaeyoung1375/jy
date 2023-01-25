@@ -33,4 +33,11 @@ public class MemberServiceImpl implements MemberService{
 		return memberMapper.memberNickNameChk(memberNickName);
 	}
 
+
+	@Override
+	public MemberVO memberLogin(MemberVO member) {
+		
+		return memberMapper.memberLogin(member);
+	}
+
 }

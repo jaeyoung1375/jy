@@ -21,5 +21,11 @@
   	
   	select count(*) from jy_member where memberNickName = #{memberNickName}
   	</select>
+  	
+  	<select id="memberLogin" resultType="com.jy.model.MemberVO">
+  	
+  	select * from jy_member where memberId = #{memberId} and memberPw = #{memberPw} 
+  	
+  	</select>
   
   </mapper>

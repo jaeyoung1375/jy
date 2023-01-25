@@ -12,5 +12,8 @@ public interface MemberMapper {
 	
 	// 닉네임 중복확인
 	public int memberNickNameChk(String memberNickName);
+	
+	// 로그인
+	public MemberVO memberLogin(MemberVO member);
 
 }

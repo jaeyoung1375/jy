@@ -74,3 +74,8 @@
 .btn:hover {
   background-position: right;
 }
+
+.login_warn{
+	font-size : 12px;
+	color:red;
+}

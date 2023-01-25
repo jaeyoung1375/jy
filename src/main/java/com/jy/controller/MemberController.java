@@ -4,6 +4,8 @@ import java.util.Random;
 import java.util.regex.Pattern;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jy.model.MemberVO;
 import com.jy.service.MemberService;
@@ -35,6 +38,35 @@ public class MemberController {
 	public String loginGET() {
 		
 		return "member/login";
+	}
+	
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String loginPOST(MemberVO member, HttpServletRequest request, RedirectAttributes rttr) {
+		
+		HttpSession session = request.getSession();
+		MemberVO lvo = memberService.memberLogin(member);
+		
+		if(lvo == null) { // 일치하지 않는 아이디, 비밀번호를 입력한 경우
+			int result = 0;
+			rttr.addFlashAttribute("result",result);
+			log.info("로그인 실패 !");
+			return "redirect:/login";
+		}
+		
+		session.setAttribute("member", lvo); // 로그인 성공시 세션을 "member"로 넘겨줌
+		log.info("로그인 성공 !");
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public String logout(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		session.invalidate();
+		log.info("로그아웃 성공 ! ");
+		
+		
+		return "redirect:/";
 	}
 	
 	

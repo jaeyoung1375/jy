@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,6 +30,9 @@
     	     <div class="textForm">
        			 <input name="memberPw" type="password" class="pw" placeholder="비밀번호">
     	     </div>
+    	     <c:if test = "${result == 0}">
+    	     <div class="login_warn">사용자 ID 또는 비밀번호를 잘못 입력하셨습니다.</div>
+    	     </c:if>
 			<label><input type="checkbox" name="rememberId" ${empty cookie.id.value ? "" : "checked"}> 아이디 기억</label> 
 			 <input type="button" class="btn" id="login_button" value="L O G I N"/>
 			</form>
