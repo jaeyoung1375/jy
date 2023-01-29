@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./resources/css/admin/main.css">
+    <link rel="stylesheet" href="/resources/css/admin/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <script src="./resources/js/admin/main.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +25,7 @@
            <li><a href="">게시판 관리</a></li>
            <li><a href="">상품 관리</a></li>
            <li><a href="">주문 관리</a></li>
-           <li><a href="">회원 관리</a></li>
+           <li><a href="/admin/memberManage">회원 관리</a></li>
            <li><a href="">환경설정</a></li>
         </ul>
 

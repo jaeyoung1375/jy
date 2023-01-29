@@ -5,7 +5,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="/resources/css/member/login.css">
-<link rel="stylesheet" href="./resources/css/main.css">
+<link rel="stylesheet" href="/resources/css/main.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -43,7 +43,7 @@
 		$(document).ready(function(){
 			
 			$('#login_button').click(function(){
-				$('.loginForm').attr('action','/login');
+				$('.loginForm').attr('action','/member/login');
 				$('.loginForm').submit();
 			});
 		});

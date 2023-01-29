@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <title>메인 페이지</title>
 </head>
@@ -24,15 +24,15 @@
                 <ul>
                 	<c:if test="${member == null }">
                     <li>
-                        <a href="/login">로그인</a>
+                        <a href="/member/login">로그인</a>
                     </li>
                      <li>
-                        <a href="/join">회원가입</a>
+                        <a href="/member/join">회원가입</a>
                     </li>
                     </c:if>
                     <c:if test="${member != null }">       
                     <li>
-                        <a href="/logout">로그아웃</a>
+                        <a href="/member/logout">로그아웃</a>
                     </li>
                     <li>
                     	<a href="#">내정보</a>

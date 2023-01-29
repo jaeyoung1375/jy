@@ -25,6 +25,7 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
+@RequestMapping("/member")
 public class MemberController {
 	
 	@Autowired
