@@ -58,15 +58,17 @@
              	<c:forEach items="${list}" var="list">
              	<tbody>
              	<tr>
-             	<td>${list.memberId}</td>
-             	<td>${list.memberName}</td>
-             	<td>${list.memberNickName}</td>
-             	<td>${list.memberEmail}</td>
+             	<td><a href="/admin/memberDetail?memberId=${list.memberId}" ><c:out value="${list.memberId}"/></a></td>
+             	<td><c:out value="${list.memberName}"/></td>
+             	<td><c:out value="${list.memberNickName}"/></td>
+             	<td><c:out value="${list.memberEmail}"/></td>
              	<td><fmt:formatDate value="${list.createDt}" pattern="yyyy-MM-dd"/></td>
              	</tr>
              	</tbody>
              	</c:forEach>
             </table>
         </div>
+        
+      
 </body>
 </html>

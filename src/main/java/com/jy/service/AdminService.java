@@ -8,5 +8,8 @@ public interface AdminService {
 	
 	/* 회원 목록 */
 	public List<MemberVO> MemberList();
+	
+	/* 회원 상세 페이지 */
+	public MemberVO selectOne(String memberId);
 
 }

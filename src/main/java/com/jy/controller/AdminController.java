@@ -42,5 +42,15 @@ public class AdminController {
 		return "/admin/memberManage";
 	}
 	
+	@RequestMapping(value="/memberDetail", method=RequestMethod.GET)
+	public String memberManage(String memberId ,Model model) {
+		
+		log.info("회원 상세 페이지 진입 ");
+		model.addAttribute("memberInfo",adminService.selectOne(memberId));
+		
+		return "/admin/memberDetail";
+		
+	}
+	
 
 }

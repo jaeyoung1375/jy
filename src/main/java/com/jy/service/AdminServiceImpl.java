@@ -22,4 +22,10 @@ public class AdminServiceImpl implements AdminService{
 		return list;
 	}
 
+	@Override
+	public MemberVO selectOne(String memberId) {
+		
+		return adminMapper.selectOne(memberId);
+	}
+
 }

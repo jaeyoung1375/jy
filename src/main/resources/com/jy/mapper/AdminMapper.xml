@@ -9,4 +9,10 @@
   		select * from jy_member order by createDt desc
   	</select>
   	
+  	<select id="selectOne" resultType="com.jy.model.MemberVO">
+  	
+		select * from jy_member where memberId = #{memberId}  	
+  	
+  	</select>
+  	
   </mapper>
