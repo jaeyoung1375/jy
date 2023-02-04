@@ -28,4 +28,10 @@ public class AdminServiceImpl implements AdminService{
 		return adminMapper.selectOne(memberId);
 	}
 
+	@Override
+	public int memberUpdate(MemberVO member) {
+		
+		return adminMapper.memberUpdate(member);
+	}
+
 }

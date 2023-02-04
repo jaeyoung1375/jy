@@ -15,7 +15,7 @@
 
     <section id="contents" class="container">
         <div class="main_visual_area">
-            <img src="https://file.rankingdak.com/image/RANK/BANNER/AR_IMG_1/20230118/IMG1674KoT003729213.jpg">
+            <img src="https://file.rankingdak.com/image/RANK/BANNER/AR_IMG_1/20230131/IMG1675KZR157043699.gif">
         </div>
     </section>
 </body>

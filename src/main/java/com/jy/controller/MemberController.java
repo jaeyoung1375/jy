@@ -51,7 +51,7 @@ public class MemberController {
 			int result = 0;
 			rttr.addFlashAttribute("result",result);
 			log.info("로그인 실패 !");
-			return "redirect:/login";
+			return "redirect:/member/login";
 		}
 		
 		session.setAttribute("member", lvo); // 로그인 성공시 세션을 "member"로 넘겨줌

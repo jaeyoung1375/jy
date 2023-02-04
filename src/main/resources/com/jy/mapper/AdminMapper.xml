@@ -15,4 +15,9 @@
   	
   	</select>
   	
+  	<update id="memberUpdate">
+  		
+  		update jy_member set memberPw = #{memberPw}, memberNickName = #{memberNickName} where memberId = #{memberId}
+  	</update>
+  	
   </mapper>

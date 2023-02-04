@@ -2,6 +2,8 @@ package com.jy.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class MemberVO {
 	
 	
@@ -11,6 +13,7 @@ public class MemberVO {
 	private String memberNickName; // 별명
 	private String memberEmail; // 이메일
 	private int adminCk; // 관리자 체크
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createDt; // 계정 생성일
 	private String mail;
 	

@@ -11,5 +11,8 @@ public interface AdminService {
 	
 	/* 회원 상세 페이지 */
 	public MemberVO selectOne(String memberId);
+	
+	/* 회원 수정 */
+	public int memberUpdate(MemberVO member);
 
 }
