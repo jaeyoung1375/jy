@@ -142,11 +142,10 @@
 		</dependency>
 		
 		<!-- spring-test 추가 -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${org.springframework-version}</version>
-			<scope>test</scope>
+		<dependency> 
+            <groupId>org.springframework</groupId> 
+            <artifactId>spring-test</artifactId> 
+            <version>5.0.7.RELEASE</version> 
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->

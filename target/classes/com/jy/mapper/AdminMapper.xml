@@ -20,4 +20,10 @@
   		update jy_member set memberPw = #{memberPw}, memberNickName = #{memberNickName} where memberId = #{memberId}
   	</update>
   	
+
+  	<select id="count" resultType="int">
+  	
+  	select count(*) from jy_member
+  	</select>
+  	
   </mapper>
