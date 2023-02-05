@@ -1,5 +1,7 @@
 package com.jy.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,13 @@ public class BoardServiceImpl implements BoardService {
 		
 		log.info("게시판 등록 진입 ");
 		boardMapper.enroll(board);
+	}
+
+
+	public List<BoardVO> boardList() {
+		
+		log.info("게시판 목록 진입");
+		return boardMapper.boardList();
 	}
 
 }

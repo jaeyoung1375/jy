@@ -9,9 +9,9 @@
   		insert into notice_board(title,content,writer) values(#{title},#{content},#{writer})
   	</insert>
   	
-  	<select id="boardList" resultType="com.jy.model.boardVO">
+  	<select id="boardList" resultType="com.jy.model.BoardVO">
   	
-  	select * from notice_board
+  	select * from notice_board order by bno desc
   	</select>
   	
   </mapper>

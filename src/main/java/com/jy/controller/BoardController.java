@@ -1,7 +1,10 @@
 package com.jy.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +24,12 @@ public class BoardController {
 	private BoardService boardService;
 	
 	@GetMapping("/list")
-	public void boardListGET() {
+	public void boardListGET(Model model) {
 		log.info("게시판 목록 페이지 진입");
+		
+		List list = boardService.boardList();
+		
+		model.addAttribute("list",list);
 	}
 	
 	@GetMapping("/enroll")
